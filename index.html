@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}</style>
+<title>Lakshman Raj Baskaran</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Lakshman Raj Baskaran, software engineer in Dublin. Agentic AI systems, LLM evaluation, Java and Python backends, embedded IoT.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; each project is a figure-backed block followed by plain notes, like a lab notebook. Black and white only. */
+:root{
+  --bg:#0b0b0b;
+  --panel:#121212;
+  --line:#262626;
+  --fg:#ececec;
+  --soft:#bdbdbd;
+  --muted:#8c8c8c;
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --sans:"Geist","Helvetica Neue",Arial,sans-serif;
+  --mono:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;
+  --col:880px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16.5px;line-height:1.65;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--bg)}
+::selection{background:var(--fg);color:var(--bg)}
+a{color:var(--fg);text-decoration:underline;text-decoration-color:var(--muted);text-underline-offset:3px;text-decoration-thickness:1px;transition:text-decoration-color .2s}
+a:hover{text-decoration-color:var(--fg)}
+:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+.col{max-width:var(--col);margin:0 auto}
+
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(11,11,11,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:12px max(16px,env(safe-area-inset-right,0px)) 12px max(16px,env(safe-area-inset-left,0px))}
+header.top .col{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.mark{font-family:var(--mono);font-size:13px;text-decoration:none}
+header nav{display:flex;gap:18px;flex-wrap:wrap}
+header nav a{font-family:var(--mono);font-size:13px;color:var(--muted);text-decoration:none}
+header nav a:hover{color:var(--fg)}
+
+.intro{padding-block:80px 56px;animation:fade .7s ease-out both}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(46px,8vw,84px);line-height:1;letter-spacing:-.01em;margin:0 0 28px;text-wrap:balance}
+h1 i{color:var(--muted)}
+.intro p{max-width:62ch;margin:0 0 16px;color:var(--soft);font-size:18px}
+.intro p strong{color:var(--fg);font-weight:500}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn{font-family:var(--mono);font-size:13px;text-decoration:none;border:1px solid var(--line);padding:9px 14px;border-radius:3px;background:var(--panel);transition:border-color .2s,background .2s}
+.btn:hover{border-color:var(--fg)}
+.btn.solid{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.meta{font-family:var(--mono);font-size:12.5px;color:var(--muted);letter-spacing:.02em}
+
+section{padding-block:56px 8px;border-top:1px solid var(--line);margin-top:24px}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5vw,46px);line-height:1.05;margin:0 0 8px}
+.sub{color:var(--muted);margin:0 0 40px;max-width:60ch}
+
+/* project block */
+.proj{margin-bottom:72px}
+.fig{position:relative;display:block;aspect-ratio:16/9;max-width:100%;overflow:hidden;border:1px solid var(--line);border-radius:4px;background:var(--panel) center/cover no-repeat;text-decoration:none}
+.fig::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,11,0) 45%,rgba(11,11,11,.92) 100%)}
+.fig img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1);transition:transform .6s ease}
+.proj:hover .fig img{transform:scale(1.025)}
+.fig .cap{position:absolute;left:20px;right:20px;bottom:16px;z-index:1;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.fig h3{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.4vw,40px);line-height:1.05;margin:0;color:var(--fg);text-wrap:balance}
+.fig .meta{color:var(--soft)}
+.body{display:grid;grid-template-columns:200px 1fr;gap:28px;margin-top:24px}
+.side{display:grid;gap:14px;align-content:start}
+.side dl{margin:0;display:grid;gap:12px}
+.side dt{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.side dd{margin:0;font-size:14px;color:var(--soft)}
+.links{display:flex;flex-direction:column;gap:6px}
+.links a,.links span{font-family:var(--mono);font-size:13px}
+.links span{color:var(--muted)}
+.main{min-width:0}
+.main>p{margin:0 0 16px;max-width:64ch}
+.main h4{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:24px 0 10px}
+.main ul{margin:0;padding-left:18px;display:grid;gap:9px;max-width:66ch;color:var(--soft)}
+.main li::marker{color:var(--muted)}
+.main code{font-family:var(--mono);font-size:.86em;background:var(--panel);border:1px solid var(--line);padding:1px 5px;border-radius:3px;color:var(--fg)}
+
+/* smaller builds */
+.small{display:grid;gap:0}
+.small article{display:grid;grid-template-columns:1fr auto;gap:8px 24px;padding:20px 0;border-top:1px solid var(--line)}
+.small article:last-child{border-bottom:1px solid var(--line)}
+.small h3{font-family:var(--sans);font-weight:500;font-size:18px;margin:0}
+.small p{grid-column:1/-1;margin:0;color:var(--soft);max-width:70ch;font-size:15.5px}
+.small .links{flex-direction:row;gap:16px;align-items:baseline}
+
+/* lists */
+.list{display:grid}
+.list>div{display:grid;grid-template-columns:200px 1fr;gap:28px;padding:22px 0;border-top:1px solid var(--line)}
+.list>div:last-child{border-bottom:1px solid var(--line)}
+.list h3{font-family:var(--sans);font-weight:500;font-size:18px;margin:0 0 4px}
+.list p{margin:4px 0 0;color:var(--soft);font-size:15.5px;max-width:64ch}
+
+.contact{padding-block:56px 24px}
+.contact h2{font-size:clamp(40px,7vw,64px)}
+.contact dl{display:grid;grid-template-columns:120px 1fr;gap:12px 20px;margin:28px 0 0;font-size:16px}
+.contact dt{font-family:var(--mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;padding-top:3px}
+.contact dd{margin:0;overflow-wrap:anywhere;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.copy{font-family:var(--mono);font-size:11.5px;background:none;border:1px solid var(--line);color:var(--muted);padding:3px 8px;border-radius:3px;cursor:pointer}
+.copy:hover{color:var(--fg);border-color:var(--fg)}
+footer{padding-block:40px;color:var(--muted);font-family:var(--mono);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:40px}
+
+@media (max-width:720px){
+  .intro{padding-block:48px 32px}
+  .body,.list>div{grid-template-columns:1fr;gap:14px}
+  .side{grid-template-columns:1fr 1fr}
+  .side dl{grid-column:1/-1;grid-template-columns:1fr 1fr}
+  .fig{aspect-ratio:4/3}
+  .fig .cap{left:14px;right:14px}
+  .contact dl{grid-template-columns:1fr;gap:4px}
+  .contact dd{margin-bottom:12px}
+  header nav{gap:12px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="col">
+    <a class="mark" href="#top">lakshman raj baskaran</a>
+    <nav aria-label="Sections">
+      <a href="#work">work</a><a href="#education">education</a><a href="#projects">projects</a><a href="#more">more</a><a href="#contact">contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="col" id="top">
+
+  <div class="intro">
+    <h1>Lakshman Raj Baskaran <i>· software engineer, Dublin</i></h1>
+    <p>I'm a <strong>software engineer with a strong interest in AI and agentic systems</strong>. I like building agents end to end: the tools they call, the data pipelines and databases behind those tools, and the evaluation that shows whether the agent is actually right. Most of my backend work is in Python and Java.</p>
+    <p>I studied electronics before computer science, so I've also soldered sensors to ESP32 boards and written PLC ladder logic. My first self-directed project tried to crack how betting systems worked. It didn't, and that's how I ended up doing a CS master's at Trinity.</p>
+    <p class="meta">currently · AI Workflow Engineer Intern at FOREO</p>
+    <div class="row">
+      <a class="btn solid" href="assets/Lakshman-Raj-Baskaran-CV.pdf" target="_blank" rel="noopener">CV (pdf)</a>
+      <a class="btn" href="https://github.com/lakshmanBaskaran" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/lakshman-raj-baskaran/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="#contact">Email</a>
+    </div>
+  </div>
+
+  <section id="work">
+    <h2>Work</h2>
+    <p class="sub">What I'm doing now, and before.</p>
+
+    <article class="proj">
+      <div class="fig"><img src="assets/foreo.jpg" alt="Pipeline: customer questions to multilingual embeddings to HDBSCAN topics, an LLM judge comparing against published FAQs, and a gap report" loading="lazy">
+        <div class="cap"><h3>FAQ Gap Analyser</h3><span class="meta">FOREO · Sep – Nov 2026</span></div></div>
+      <div class="body">
+        <div class="side">
+          <dl><div><dt>role</dt><dd>AI Workflow Engineer Intern</dd></div><div><dt>stack</dt><dd>Python, Qwen via Ollama, Pydantic, HDBSCAN, scikit-learn, SQLite / SQLAlchemy, pytest, GitHub Actions</dd></div></dl>
+          <div class="links"><span>internal project · no public code</span></div>
+        </div>
+        <div class="main">
+          <p>FOREO publishes FAQs for its products. Customers still ask questions on marketplaces. I'm building a tool that measures how much of what customers actually ask is answered by those FAQs, and where the biggest gaps are.</p>
+          <h4>What I did</h4>
+          <ul>
+            <li>Collected 2,584 real marketplace questions in Turkish and English across 93 products, and matched them against the published FAQs.</li>
+            <li>Embedded the questions with a multilingual model and clustered them into 16 topics with HDBSCAN, so gaps show up as themes instead of thousands of single questions.</li>
+            <li>Used a local LLM (Qwen through Ollama, with Pydantic-validated output) as a judge: does this FAQ actually answer this question? Its verdicts agreed with my human labels 86.7% of the time on held-out data.</li>
+            <li>Result so far: the FAQs answer about 40% of questions. 8 of the 10 biggest gaps the tool flagged held up under manual review.</li>
+            <li>Split evaluation into synthetic and real hold-out sets, with a provenance rule that keeps synthetic data out of any number that reaches the business.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <div class="list">
+      <div>
+        <span class="meta">Aug – Sep 2023<br>India</span>
+        <div><h3>Engineering Intern, Siemens Centre of Excellence</h3>
+          <p>Built part of a warehouse management automation project in PLC ladder logic, in a small team where everyone's control logic had to work together once combined. I documented the module and presented it to the engineers. In industrial automation a logic mistake moves real machinery, so testing came first.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="education">
+    <h2>Education</h2>
+    <p class="sub">Degrees, certifications and a publication.</p>
+    <div class="list">
+      <div><span class="meta">Sep 2024 – Sep 2025<br>Dublin</span>
+        <div><h3>M.Sc. Computer Science, Future Networked Systems</h3><p>Trinity College Dublin. Thesis on modulation classification with graph neural networks. Modules included Machine Learning, Artificial Intelligence, Advanced Software Engineering, Distributed Systems, Scalable Computing, Applied Statistical Modelling and IoT.</p></div></div>
+      <div><span class="meta">2020 – 2024<br>Chennai</span>
+        <div><h3>B.Tech. Electronics and Communication Engineering</h3><p>SRM Institute of Science and Technology, 8.52/10. Research on photonic biosensors for early detection of basal cell carcinoma.</p></div></div>
+      <div><span class="meta">Jan 2021 – Jan 2026<br>online</span>
+        <div><h3>Diploma in Programming</h3><p>IIT Madras. Java, Python, Data Structures and Algorithms, Modern Application Development I and II.</p></div></div>
+      <div><span class="meta">Aug 2026</span>
+        <div><h3>Microsoft Certified: Azure AI Cloud Developer Associate</h3><p>Credential ID 6FC7792BA214B975 · <a href="https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-cloud-developer-associate/" target="_blank" rel="noopener">about the certification ↗</a></p></div></div>
+      <div><span class="meta">Apr 2026</span>
+        <div><h3>Introduction to Model Context Protocol</h3><p>Anthropic · <a href="https://verify.skilljar.com/c/9mfdk4ay7dwj" target="_blank" rel="noopener">verify certificate ↗</a></p></div></div>
+      <div><span class="meta">2024</span>
+        <div><h3>Book chapter, Advanced Materials for Biomedical Devices</h3><p>Co-authored a peer-reviewed chapter on photonic biosensor design, using COMSOL simulation and regression analysis.</p></div></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <p class="sub">The bigger things I've built, with what I actually did on each.</p>
+
+    <article class="proj">
+      <a class="fig" href="https://github.com/lakshmanBaskaran/otel-agent" target="_blank" rel="noopener"><img src="assets/revenue.jpg" alt="Charts: context per request 226k tokens on a shared thread vs about 24k per session; latency 57.5s to 24.1s" loading="lazy">
+        <div class="cap"><h3>Revenue Manager Agent</h3><span class="meta">2026 · OTEL build challenge</span></div></a>
+      <div class="body">
+        <div class="side">
+          <dl><div><dt>stack</dt><dd>Python, LangChain Deep Agents, Claude API, PostgreSQL (Neon), Playwright, Chainlit, LangSmith, Render</dd></div><div><dt>tests</dt><dd>50, across ETL, tools, skills and agent wiring</dd></div></dl>
+          <div class="links"><a href="https://github.com/lakshmanBaskaran/otel-agent" target="_blank" rel="noopener">code ↗</a></div>
+        </div>
+        <div class="main">
+          <p>An AI revenue manager for a fictional hotel, the Grand Harbour. You ask it things a hotel revenue manager would ask ("what's on the books for March?", "are we too dependent on one channel?") and it answers from the reservation database, showing which tools and skills it used.</p>
+          <h4>What I did</h4>
+          <ul>
+            <li>Wrote 7 SQL-backed tools, including <code>get_otb_summary</code>, <code>get_pickup_delta</code>, <code>get_as_of_otb</code> and <code>get_segment_mix</code>, plus 2 subagents and 11 skill files covering pickup and pace, cancellation patterns, rate integrity, channel dependency and concentration risk.</li>
+            <li>Put a human-in-the-loop approval step in front of sensitive queries.</li>
+            <li>Built the ETL pipeline that feeds the agent. Extract: Playwright drives a real browser through the client-rendered reservation site (list pages, reference tables and each reservation's detail page), reading detail values straight from the live DOM with <code>page.evaluate()</code>. Transform: rows are cleaned and expanded to one row per reservation per stay night, keyed on stay date. Load: a truncate-and-reload into Neon Postgres, which is simpler and safer than upserts for a dataset that regenerates daily.</li>
+            <li>Made each load verifiable: the run records its anchor date in a scrape manifest and a SHA-256 fingerprint of the sorted rows, and the deployed app's <code>/health</code> endpoint returns the same fingerprint so I can check the live database matches. Postgres views apply the cancellation and provisional-booking filters once, so no tool can forget them.</li>
+            <li>Found with LangSmith tracing that one shared thread was growing from 24k to 226k tokens of context. Moving to per-session threads cut latency 58% (57.5s → 24.1s).</li>
+            <li>Replaced vague routing prompts with a deterministic routing table, which cut LLM calls on one-tool questions. Fixed a race condition with a per-session lock, and a bug where approval fired twice.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <a class="fig" href="https://github.com/lakshmanBaskaran/Spring-Introspector" target="_blank" rel="noopener"><img src="assets/mcp.jpg" alt="Bar chart: 80.7K tokens per query for a source-reading agent vs 9.5K with the MCP tools, with the seven tool names listed" loading="lazy">
+        <div class="cap"><h3>Spring Introspection MCP Server</h3><span class="meta">2026 · Java</span></div></a>
+      <div class="body">
+        <div class="side">
+          <dl><div><dt>stack</dt><dd>Java 21, Spring Boot 4, Spring AI 2, Model Context Protocol, JUnit 5, AssertJ</dd></div><div><dt>tests</dt><dd>79 end-to-end against a live app, 17 redaction cases</dd></div></dl>
+          <div class="links"><a href="https://github.com/lakshmanBaskaran/Spring-Introspector" target="_blank" rel="noopener">code ↗</a></div>
+        </div>
+        <div class="main">
+          <p>AI coding agents read source files. In Spring, a lot of what matters only exists at runtime: which property value won, why a bean was or wasn't created, whether a bean is really a proxy. This starter lets an agent ask the running app directly.</p>
+          <h4>What I did</h4>
+          <ul>
+            <li>Wrote a Spring Boot starter that adds 7 MCP tools to any app: <code>list_beans</code>, <code>describe_bean</code>, <code>why_bean</code>, <code>resolve_property</code>, <code>list_property_keys</code>, <code>explain_endpoint</code> and <code>describe_proxy</code>.</li>
+            <li><code>resolve_property</code> walks the whole precedence chain, so the agent sees that an env var overrode <code>application.yml</code>. <code>why_bean</code> reads the auto-configuration condition report.</li>
+            <li><code>describe_proxy</code> shows a bean's real runtime class and the advisors applied to it, which surfaces problems like the self-invocation issue where <code>@Transactional</code> silently doesn't apply.</li>
+            <li>Built a deny-over-allow redaction layer so passwords, tokens and other secrets never reach the agent.</li>
+            <li>Benchmarked it against a naive agent that reads source and Actuator output: token use fell 88%, from 80.7K to 9.5K per question.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <a class="fig" href="https://github.com/lakshmanBaskaran/ACM-CGN" target="_blank" rel="noopener"><img src="assets/thesis.jpg" alt="I/Q constellation diagrams for BPSK, QPSK, 8PSK and 16-QAM" loading="lazy">
+        <div class="cap"><h3>Modulation Classification with Graph Neural Networks</h3><span class="meta">2025 · M.Sc. thesis, Trinity</span></div></a>
+      <div class="body">
+        <div class="side">
+          <dl><div><dt>stack</dt><dd>Python, PyTorch, PyTorch Geometric, scikit-learn, PyWavelets</dd></div><div><dt>supervisor</dt><dd>Dr. Viet Quoc Pham</dd></div><div><dt>data</dt><dd>RadioML 2018.01A, 24 modulation classes</dd></div></dl>
+          <div class="links"><a href="https://github.com/lakshmanBaskaran/ACM-CGN" target="_blank" rel="noopener">final code ↗</a><a href="https://github.com/lakshmanBaskaran/Dissertation" target="_blank" rel="noopener">earlier version ↗</a></div>
+        </div>
+        <div class="main">
+          <p>Given a short burst of raw radio samples, work out how it was modulated. It's a core step in spectrum monitoring and cognitive radio, and it gets hard at low signal-to-noise ratios where the constellations blur together.</p>
+          <h4>What I did</h4>
+          <ul>
+            <li>Turned each 1024-sample I/Q frame into a graph: 15 overlapping 128-sample segments become nodes, connected in a chain. The GNN uses GATv2 or TransformerConv layers with SAG pooling.</li>
+            <li>Fed the model three views of the same signal: time-domain segments, an STFT spectrogram and a wavelet (CWT) view, with a wavelet denoising step in front.</li>
+            <li>Added SNR-aware expert adapters, since the model behaves very differently above and below about 5 dB.</li>
+            <li>Tried ArcFace and CosFace metric-learning heads, and higher-order cumulant features (C20 to C42) as a classical baseline.</li>
+            <li>Extracted the network's embeddings, trained a calibrated SVM on them, and fused the two with SNR-dependent weights.</li>
+            <li>Used phase rotation, time shift, noise, mixup and SpecAugment for augmentation.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div class="fig"><img src="assets/disaster.jpg" alt="Flow diagram: incident report to fire, medical and police scores, AI allocation with deterministic fallback, then dispatch and reroute" loading="lazy">
+        <div class="cap"><h3>Disaster Management Platform</h3><span class="meta">Sep 2024 – Mar 2025 · team of 8</span></div></div>
+      <div class="body">
+        <div class="side">
+          <dl><div><dt>stack</dt><dd>Java Spring Boot, Python FastAPI, PostgreSQL, Next.js, Docker, GitHub Actions</dd></div><div><dt>my part</dt><dd>Spring Boot backend, admin dashboard, CI/CD</dd></div></dl>
+          <div class="links"><span>team project · repo is private</span></div>
+        </div>
+        <div class="main">
+          <p>A citizen safety platform meant to be the single source of truth during a disaster. It takes in incident reports, sends the right emergency services, and reroutes people and traffic away from affected areas.</p>
+          <h4>What I did</h4>
+          <ul>
+            <li>Owned part of the Spring Boot backend that coordinates the response, and integrated TomTom and OpenStreetMap for incident locations and rerouting.</li>
+            <li>Replaced one blended severity score with three separate scoring models for fire, medical and police. A crowded incident with no injuries now escalates police without sending ambulances nobody needs.</li>
+            <li>Added a deterministic fallback for resource allocation, so every report still gets a fire, medical and police allocation when the upstream AI fails.</li>
+            <li>Contributed to the Next.js admin dashboard, and set up GitHub Actions to build Docker images for the services.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <a class="fig" href="https://github.com/lakshmanBaskaran/activity-tracker" target="_blank" rel="noopener"><img src="assets/har.jpg" alt="Normalised confusion matrix for seven activity classes, 92.25% test accuracy" loading="lazy">
+        <div class="cap"><h3>Activity Recognition from Phone and Watch Sensors</h3><span class="meta">2025 · ML</span></div></a>
+      <div class="body">
+        <div class="side">
+          <dl><div><dt>stack</dt><dd>Python, LightGBM, scikit-learn, NumPy, ONNX</dd></div><div><dt>result</dt><dd>92.25% test accuracy on 25,452 windows</dd></div></dl>
+          <div class="links"><a href="https://github.com/lakshmanBaskaran/activity-tracker" target="_blank" rel="noopener">code ↗</a></div>
+        </div>
+        <div class="main">
+          <p>Classifies what someone is doing (biking, sitting, standing, walking, going up or down stairs) from smartphone and smartwatch accelerometer and gyroscope data, using the Heterogeneity HAR dataset.</p>
+          <h4>What I did</h4>
+          <ul>
+            <li>Merged accelerometer and gyroscope streams on timestamp and label, then cut them into 200-sample windows (about 4 seconds) with 50% overlap.</li>
+            <li>Extracted 42 time and frequency features per window: mean, standard deviation, median, IQR, zero-crossing rate and FFT moments.</li>
+            <li>Chose a feature-based LightGBM model over deep learning to keep it small, fast and easy to debug, and tuned it with RandomizedSearchCV.</li>
+            <li>Exported the model to ONNX for deployment. Stairs up versus stairs down is still the hardest pair to separate.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div class="fig"><img src="assets/wildfire.jpg" alt="Diagram: sensor unit to two LoRa nodes to gateway to cloud ML to actuator unit" loading="lazy">
+        <div class="cap"><h3>Wildfire Detection and Suppression</h3><span class="meta">Jan – Mar 2025 · embedded</span></div></div>
+      <div class="body">
+        <div class="side">
+          <dl><div><dt>stack</dt><dd>ESP32, ESP-EYE, Arduino C++, LoRa, cloud ML model</dd></div><div><dt>sensors</dt><dd>MQ-2 gas, DHT11, ultrasonic, temperature, magnetometer, flame</dd></div></dl>
+          <div class="links"><span>no public repo</span></div>
+        </div>
+        <div class="main">
+          <p>A full detect-and-respond system for forest fires, from the sensors in the trees to a water spray that points itself.</p>
+          <h4>What I did</h4>
+          <ul>
+            <li>Built an ESP32 sensor unit reading MQ-2 gas, DHT11 temperature and humidity, ultrasonic and temperature sensors, with an ESP-EYE camera taking images of the area.</li>
+            <li>Relayed sensor data and images node to node over LoRa to a gateway at the forest edge, which uploads to the cloud where an ML model decides whether there's a fire.</li>
+            <li>Built an actuator unit that gets the cloud result, turns toward the sensor unit using a magnetometer, and aims a water spray using a flame sensor.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div class="fig"><img src="assets/stats.jpg" alt="Dot plot: the depression effect on Republican vote odds falls from about 17% in a simple model to about 2% after spatial controls" loading="lazy">
+        <div class="cap"><h3>Depression and Voting Patterns</h3><span class="meta">2025 · spatial statistics, Trinity</span></div></div>
+      <div class="body">
+        <div class="side">
+          <dl><div><dt>stack</dt><dd>R, sf, GAMs, US Census shapefiles</dd></div><div><dt>scale</dt><dd>3,073 counties, 50 states</dd></div></dl>
+          <div class="links"><span>coursework · no public repo</span></div>
+        </div>
+        <div class="main">
+          <p>Do counties with higher depression rates vote more Republican? A simple model says yes, strongly. Most of that turns out to be geography.</p>
+          <h4>What I did</h4>
+          <ul>
+            <li>Joined election, health and census data for 3,073 counties, and matched each county to its map position using Census shapefiles in R with <code>sf</code>.</li>
+            <li>The simple model said each 1-point rise in depression raised the odds of a Republican vote by about 17%.</li>
+            <li>Built 6 progressively stronger spatial models (GAMs) controlling for location, state and race. The effect shrank to about 2%: smaller, but still significant.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section id="more">
+    <h2>Smaller builds</h2>
+    <p class="sub">Coursework and side projects.</p>
+    <div class="small">
+      <article><h3>Placement Portal</h3>
+        <div class="links"><a href="https://github.com/lakshmanBaskaran/MAD-II-Admission-Portal" target="_blank" rel="noopener">v2 ↗</a><a href="https://github.com/lakshmanBaskaran/MAD-I-Admission-Portal" target="_blank" rel="noopener">v1 ↗</a></div>
+        <p>A campus placement system with admin, company and student roles: companies post placement drives, students apply, admins approve. Version 2 adds Celery workers on Redis for CSV exports, deadline reminders and a monthly admin report, plus Redis caching. Flask, SQLAlchemy. Built for IIT Madras.</p></article>
+      <article><h3>NASA Data Explorer</h3>
+        <div class="links"><a href="https://github.com/lakshmanBaskaran/NASA-API-APP" target="_blank" rel="noopener">code ↗</a><a href="https://nasa-api-app-indol.vercel.app" target="_blank" rel="noopener">live ↗</a></div>
+        <p>A dashboard over NASA's Astronomy Picture of the Day and EONET, which tracks live Earth events like wildfires, storms and icebergs. An Express backend proxies the APIs so the key never reaches the browser, and the React front end shows events as cards, a timeline or a map. React, Vite, Material UI, TanStack Query, deployed on Vercel.</p></article>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Get in touch</h2>
+    <p class="sub" style="margin:8px 0 0">I'm looking for software engineering roles in AI, backend and cloud, in Dublin or remote.</p>
+    <dl>
+      <dt>email</dt><dd><a id="email" href="mailto:lakshmanbaskaran56@gmail.com">lakshmanbaskaran56@gmail.com</a><button class="copy" type="button" id="copyBtn">copy</button></dd>
+      <dt>phone</dt><dd><a href="tel:+353894273724">+353 89 427 3724</a></dd>
+      <dt>github</dt><dd><a href="https://github.com/lakshmanBaskaran" target="_blank" rel="noopener">github.com/lakshmanBaskaran</a></dd>
+      <dt>linkedin</dt><dd><a href="https://www.linkedin.com/in/lakshman-raj-baskaran/" target="_blank" rel="noopener">linkedin.com/in/lakshman-raj-baskaran</a></dd>
+    </dl>
+  </section>
+
+  <footer><span>© 2026 Lakshman Raj Baskaran</span><a href="#top">back to top</a></footer>
+</main>
+
+<script>
+document.getElementById('copyBtn').addEventListener('click', e => {
+  const b = e.currentTarget, t = document.getElementById('email').textContent;
+  const done = m => { b.textContent = m; setTimeout(() => b.textContent = 'copy', 1600); };
+  if (navigator.clipboard) navigator.clipboard.writeText(t).then(() => done('copied'), () => done('select it'));
+  else done('select it');
+});
+</script>
+
+</body>
+</html>
