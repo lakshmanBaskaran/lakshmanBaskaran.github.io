@@ -22,13 +22,14 @@
   --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
   --sans:"Geist","Helvetica Neue",Arial,sans-serif;
   --mono:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;
-  --col:880px;
+  --col:1240px;
+  --gutter:clamp(16px,4vw,56px);
   color-scheme:dark;
 }
 *{box-sizing:border-box}
 html{background:var(--bg);scroll-behavior:smooth}
 body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16.5px;line-height:1.65;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--bg)}
 ::selection{background:var(--fg);color:var(--bg)}
 a{color:var(--fg);text-decoration:underline;text-decoration-color:var(--muted);text-underline-offset:3px;text-decoration-thickness:1px;transition:text-decoration-color .2s}
@@ -37,18 +38,22 @@ a:hover{text-decoration-color:var(--fg)}
 .col{max-width:var(--col);margin:0 auto}
 
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(11,11,11,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--line);margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:12px max(16px,env(safe-area-inset-right,0px)) 12px max(16px,env(safe-area-inset-left,0px))}
+  border-bottom:1px solid var(--line);margin:0 calc(-1*max(var(--gutter),env(safe-area-inset-left,0px)));padding:12px max(var(--gutter),env(safe-area-inset-right,0px)) 12px max(var(--gutter),env(safe-area-inset-left,0px))}
 header.top .col{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
 .mark{font-family:var(--mono);font-size:13px;text-decoration:none}
 header nav{display:flex;gap:18px;flex-wrap:wrap}
 header nav a{font-family:var(--mono);font-size:13px;color:var(--muted);text-decoration:none}
 header nav a:hover{color:var(--fg)}
 
-.intro{padding-block:80px 56px;animation:fade .7s ease-out both}
+.intro{padding-block:80px 56px;animation:fade .7s ease-out both;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:56px;align-items:end}
+.intro h1{grid-column:1/-1}
+.facts{margin:0;display:grid;gap:18px;border-left:1px solid var(--line);padding-left:28px}
+.facts dt{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:2px 0 0;font-size:15px}
 @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 h1{font-family:var(--serif);font-weight:400;font-size:clamp(46px,8vw,84px);line-height:1;letter-spacing:-.01em;margin:0 0 28px;text-wrap:balance}
 h1 i{color:var(--muted)}
-.intro p{max-width:62ch;margin:0 0 16px;color:var(--soft);font-size:18px}
+.intro p{max-width:68ch;margin:0 0 16px;color:var(--soft);font-size:18px}
 .intro p strong{color:var(--fg);font-weight:500}
 .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
 .btn{font-family:var(--mono);font-size:13px;text-decoration:none;border:1px solid var(--line);padding:9px 14px;border-radius:3px;background:var(--panel);transition:border-color .2s,background .2s}
@@ -61,7 +66,8 @@ h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5vw,46px);line-
 .sub{color:var(--muted);margin:0 0 40px;max-width:60ch}
 
 /* project block */
-.proj{margin-bottom:72px}
+.proj{margin-bottom:88px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:start}
+.proj>.fig{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px)}
 .fig{position:relative;display:block;aspect-ratio:16/9;max-width:100%;overflow:hidden;border:1px solid var(--line);border-radius:4px;background:var(--panel) center/cover no-repeat;text-decoration:none}
 .fig::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,11,0) 45%,rgba(11,11,11,.92) 100%)}
 .fig img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1);transition:transform .6s ease}
@@ -69,12 +75,12 @@ h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5vw,46px);line-
 .fig .cap{position:absolute;left:20px;right:20px;bottom:16px;z-index:1;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
 .fig h3{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.4vw,40px);line-height:1.05;margin:0;color:var(--fg);text-wrap:balance}
 .fig .meta{color:var(--soft)}
-.body{display:grid;grid-template-columns:200px 1fr;gap:28px;margin-top:24px}
-.side{display:grid;gap:14px;align-content:start}
-.side dl{margin:0;display:grid;gap:12px}
+.body{display:flex;flex-direction:column-reverse;gap:24px;min-width:0}
+.side{display:grid;gap:14px;align-content:start;border-top:1px solid var(--line);padding-top:18px}
+.side dl{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:12px 24px}
 .side dt{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .side dd{margin:0;font-size:14px;color:var(--soft)}
-.links{display:flex;flex-direction:column;gap:6px}
+.links{display:flex;flex-wrap:wrap;gap:6px 18px}
 .links a,.links span{font-family:var(--mono);font-size:13px}
 .links span{color:var(--muted)}
 .main{min-width:0}
@@ -89,15 +95,15 @@ h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5vw,46px);line-
 .small article{display:grid;grid-template-columns:1fr auto;gap:8px 24px;padding:20px 0;border-top:1px solid var(--line)}
 .small article:last-child{border-bottom:1px solid var(--line)}
 .small h3{font-family:var(--sans);font-weight:500;font-size:18px;margin:0}
-.small p{grid-column:1/-1;margin:0;color:var(--soft);max-width:70ch;font-size:15.5px}
+.small p{grid-column:1/-1;margin:0;color:var(--soft);max-width:90ch;font-size:15.5px}
 .small .links{flex-direction:row;gap:16px;align-items:baseline}
 
 /* lists */
 .list{display:grid}
-.list>div{display:grid;grid-template-columns:200px 1fr;gap:28px;padding:22px 0;border-top:1px solid var(--line)}
+.list>div{display:grid;grid-template-columns:240px 1fr;gap:28px;padding:22px 0;border-top:1px solid var(--line)}
 .list>div:last-child{border-bottom:1px solid var(--line)}
 .list h3{font-family:var(--sans);font-weight:500;font-size:18px;margin:0 0 4px}
-.list p{margin:4px 0 0;color:var(--soft);font-size:15.5px;max-width:64ch}
+.list p{margin:4px 0 0;color:var(--soft);font-size:15.5px;max-width:90ch}
 
 .contact{padding-block:56px 24px}
 .contact h2{font-size:clamp(40px,7vw,64px)}
@@ -108,11 +114,17 @@ h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5vw,46px);line-
 .copy:hover{color:var(--fg);border-color:var(--fg)}
 footer{padding-block:40px;color:var(--muted);font-family:var(--mono);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:40px}
 
+@media (max-width:960px){
+  .proj{grid-template-columns:1fr;gap:24px}
+  .proj>.fig{position:relative;top:auto}
+  .intro{grid-template-columns:1fr;gap:32px}
+  .facts{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:24px;grid-template-columns:1fr 1fr}
+}
 @media (max-width:720px){
   .intro{padding-block:48px 32px}
   .body,.list>div{grid-template-columns:1fr;gap:14px}
-  .side{grid-template-columns:1fr 1fr}
-  .side dl{grid-column:1/-1;grid-template-columns:1fr 1fr}
+  .side dl{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr}
   .fig{aspect-ratio:4/3}
   .fig .cap{left:14px;right:14px}
   .contact dl{grid-template-columns:1fr;gap:4px}
@@ -129,7 +141,7 @@ footer{padding-block:40px;color:var(--muted);font-family:var(--mono);font-size:1
   <div class="col">
     <a class="mark" href="#top">lakshman raj baskaran</a>
     <nav aria-label="Sections">
-      <a href="#work">work</a><a href="#education">education</a><a href="#projects">projects</a><a href="#more">more</a><a href="#contact">contact</a>
+      <a href="#work">work</a><a href="#education">education</a><a href="#publication">publication</a><a href="#projects">projects</a><a href="#more">more</a><a href="#contact">contact</a>
     </nav>
   </div>
 </header>
@@ -138,15 +150,22 @@ footer{padding-block:40px;color:var(--muted);font-family:var(--mono);font-size:1
 
   <div class="intro">
     <h1>Lakshman Raj Baskaran <i>· software engineer, Dublin</i></h1>
+    <div>
     <p>I'm a <strong>software engineer with a strong interest in AI and agentic systems</strong>. I build web applications and APIs with <strong>Spring Boot, FastAPI and Flask</strong>, on PostgreSQL, Redis and Docker, and more and more of what I build has an AI agent inside it: the tools it calls, the data pipelines behind those tools, and the evaluation that shows whether it gets things right.</p>
-    <p>I have an M.Sc. in Computer Science from Trinity College Dublin. Before that I studied electronics, and my final-year research on photonic biosensors for skin cancer detection was published as a book chapter. My first self-directed project tried to crack how betting systems worked. It didn't, and that's what pushed me into computer science.</p>
-    <p class="meta">currently · AI Workflow Engineer Intern at FOREO</p>
+    <p>I have an M.Sc. in Computer Science from Trinity College Dublin, and a bachelor's in Electronics and Communication Engineering.</p>
     <div class="row">
       <a class="btn solid" href="assets/Lakshman-Raj-Baskaran-CV.pdf" target="_blank" rel="noopener">CV (pdf)</a>
       <a class="btn" href="https://github.com/lakshmanBaskaran" target="_blank" rel="noopener">GitHub</a>
       <a class="btn" href="https://www.linkedin.com/in/lakshman-raj-baskaran/" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn" href="#contact">Email</a>
     </div>
+    </div>
+    <dl class="facts">
+      <div><dt>currently</dt><dd>AI Workflow Engineer Intern, FOREO</dd></div>
+      <div><dt>focus</dt><dd>AI and agentic systems</dd></div>
+      <div><dt>builds with</dt><dd>Spring Boot · FastAPI · Flask · PostgreSQL · Docker</dd></div>
+      <div><dt>based in</dt><dd>Dublin, Ireland</dd></div>
+    </dl>
   </div>
 
   <section id="work">
@@ -187,20 +206,29 @@ footer{padding-block:40px;color:var(--muted);font-family:var(--mono);font-size:1
 
   <section id="education">
     <h2>Education</h2>
-    <p class="sub">Degrees, certifications and a publication.</p>
+    <p class="sub">Degrees and certifications.</p>
     <div class="list">
       <div><span class="meta">Sep 2024 – Sep 2025<br>Dublin</span>
         <div><h3>M.Sc. Computer Science, Future Networked Systems</h3><p>Trinity College Dublin. Thesis on modulation classification with graph neural networks. Modules included Machine Learning, Artificial Intelligence, Advanced Software Engineering, Distributed Systems, Scalable Computing, Applied Statistical Modelling and IoT.</p></div></div>
       <div><span class="meta">2020 – 2024<br>Chennai</span>
-        <div><h3>B.Tech. Electronics and Communication Engineering</h3><p>SRM Institute of Science and Technology, 8.52/10. Final-year research project published as a book chapter (below).</p></div></div>
+        <div><h3>B.Tech. Electronics and Communication Engineering</h3><p>SRM Institute of Science and Technology, 8.52/10. Final-year research project published as a book chapter.</p></div></div>
       <div><span class="meta">Jan 2021 – Jan 2026<br>online</span>
         <div><h3>Diploma in Programming</h3><p>IIT Madras. Java, Python, Data Structures and Algorithms, Modern Application Development I and II.</p></div></div>
       <div><span class="meta">Aug 2026</span>
         <div><h3>Microsoft Certified: Azure AI Cloud Developer Associate</h3><p>Credential ID 6FC7792BA214B975 · <a href="https://learn.microsoft.com/api/credentials/share/en-us/lakshmanbaskaran-9278/6FC7792BA214B975?sharingId=6B010E488C58D7C1" target="_blank" rel="noopener">verify credential ↗</a></p></div></div>
       <div><span class="meta">Apr 2026</span>
         <div><h3>Introduction to Model Context Protocol</h3><p>Anthropic · <a href="https://verify.skilljar.com/c/9mfdk4ay7dwj" target="_blank" rel="noopener">verify certificate ↗</a></p></div></div>
+    </div>
+  </section>
+
+  <section id="publication">
+    <h2>Publication</h2>
+    <p class="sub">Peer-reviewed work from my bachelor's research.</p>
+    <div class="list">
       <div><span class="meta">2024<br>book chapter</span>
-        <div><h3>Publication: photonic biosensor for early detection of skin cancer</h3><p>My bachelor's research project, published as a co-authored, peer-reviewed chapter in <em>Advanced Materials for Biomedical Devices</em> (2024). We designed a photonic biosensor to detect basal cell carcinoma cells in real time, as a faster alternative to traditional detection, simulating the sensor in COMSOL and analysing its response with regression analysis.</p></div></div>
+        <div><h3>Photonic biosensor for early detection of skin cancer</h3>
+          <p>Co-authored chapter in <em>Advanced Materials for Biomedical Devices</em> (2024), peer reviewed.</p>
+          <p>This was my bachelor's research project at SRM. We designed a photonic biosensor to detect basal cell carcinoma cells in real time, as a faster alternative to traditional detection. We simulated the sensor in COMSOL and used regression analysis to study its response.</p></div></div>
     </div>
   </section>
 
